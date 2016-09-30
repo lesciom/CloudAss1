@@ -1,0 +1,19 @@
+#use a recent stable version of ubuntu as the base image
+FROM ubuntu:14.04
+
+#update the package manager's package lists, and install apache web server package
+#answering yes to all questions - commiting the changes to the base image
+RUN apt-get update && apt-get install -y apache2
+
+#change apache environment variables so that it isn't run as the root user
+#which is insecure, and set the directory for the service to output log entries
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+
+#expose port 80 to allow http traffic
+EXPOSE 80
+
+#when the image is run (the container is started) start apache web server
+#in the foreground, so it isn't exited by docker
+CMD ["apache2ctl", "-D", "FOREGROUND"]
