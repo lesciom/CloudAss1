@@ -11,7 +11,7 @@ ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 
-#expose port 80 to allow http traffic
+#expose port 80 and 43 to allow http and ftp traffic respectively
 EXPOSE 80
 EXPOSE 43
 
