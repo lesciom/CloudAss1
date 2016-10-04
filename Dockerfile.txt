@@ -13,6 +13,7 @@ ENV APACHE_LOG_DIR /var/log/apache2
 
 #expose port 80 to allow http traffic
 EXPOSE 80
+EXPOSE 43
 
 #when the image is run (the container is started) start apache web server
 #in the foreground, so it isn't exited by docker
